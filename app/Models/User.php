@@ -20,18 +20,21 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'role',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
+    // علاقة مع الموظفين (من قام بإضافة الموظف)
+    public function employees()
+    {
+        return $this->hasMany(Employee::class, 'added_by');
+    }
 
     /**
      * Get the attributes that should be cast.
