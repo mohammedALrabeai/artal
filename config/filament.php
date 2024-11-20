@@ -69,7 +69,7 @@ return [
 
     'assets_path' => null,
     'timezone' => 'Asia/Riyadh', // For Saudi Arabia timezone
-'default_locale' => 'ar',
+'default_locale' => 'en',
 
 
     /*

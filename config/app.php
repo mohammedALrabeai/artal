@@ -97,7 +97,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'locale' => 'ar',
+    'locale' => 'en',
 
 
     'key' => env('APP_KEY'),
