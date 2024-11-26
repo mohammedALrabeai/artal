@@ -66,4 +66,10 @@ class Employee extends Model
     return $this->hasMany(EmployeeZone::class);
 }
 
+public function projects()
+{
+    return $this->belongsToMany(Project::class, 'employee_project_records')
+        ->withPivot('start_date', 'end_date', 'status');
+}
+
 }

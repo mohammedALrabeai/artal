@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ZoneResource\Pages;
 use App\Filament\Resources\ZoneResource\RelationManagers;
 use App\Models\Zone;
+use App\Models\Project;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -63,6 +64,12 @@ class ZoneResource extends Resource
                 ->label(__('Pattern'))
                 ->options(Pattern::all()->pluck('name', 'id'))
                 ->searchable()
+                ->preload()
+                ->required(),
+                Forms\Components\Select::make('project_id')
+                ->label(__('Project'))
+                ->options(Project::all()->pluck('name', 'id'))
+                ->searchable()
                 ->required(),
     
             Forms\Components\View::make('components.map-picker')
@@ -111,6 +118,10 @@ class ZoneResource extends Resource
                     ->label(__('Pattern'))
                     ->sortable()
                     ->searchable(),
+                    Tables\Columns\TextColumn::make('project.name')
+                    ->label(__('Project'))
+                    ->sortable()
+                    ->searchable(),
 
                 Tables\Columns\TextColumn::make('start_date')
                     ->label(__('Start Date'))
@@ -130,6 +141,9 @@ class ZoneResource extends Resource
                 SelectFilter::make('pattern_id')
                     ->label(__('Pattern'))
                     ->options(Pattern::all()->pluck('name', 'id')),
+                    SelectFilter::make('project_id')
+                    ->label(__('Project'))
+                    ->options(Project::all()->pluck('name', 'id')),
 
                 TernaryFilter::make('status')
                     ->label(__('Active'))

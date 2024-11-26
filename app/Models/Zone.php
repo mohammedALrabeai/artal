@@ -17,6 +17,7 @@ class Zone extends Model
         'area',
         'emp_no',
         'status',
+        'project_id',
     ];
     protected $casts = [
         'lat' => 'float',
@@ -42,6 +43,11 @@ class Zone extends Model
     public function employees()
 {
     return $this->hasMany(EmployeeZone::class);
+}
+
+public function project()
+{
+    return $this->belongsTo(Project::class);
 }
 
 }
