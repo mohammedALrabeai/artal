@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'phone',
-        'role',
+        'role',             //            $table->enum('role', ['manager', 'general_manager', 'hr']);
+
         'password',
     ];
 
@@ -47,5 +48,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+     /**
+     * تحقق مما إذا كان المستخدم لديه الدور المحدد.
+     */
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
     }
 }

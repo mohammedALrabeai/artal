@@ -481,6 +481,7 @@ class EmployeeResource extends Resource
         RelationManagers\ProjectRecordsRelationManager::class,
         RelationManagers\AttachmentsRelationManager::class,
         RelationManagers\AttendanceRelationManager::class,
+    
     ];
 }
 

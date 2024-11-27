@@ -96,6 +96,9 @@ class ProjectRecordsRelationManager extends RelationManager // تحديث الا
                 Tables\Filters\TernaryFilter::make('status')
                     ->label(__('Active')),
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

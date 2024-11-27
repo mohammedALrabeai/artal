@@ -78,6 +78,9 @@ class AttendanceRelationManager extends RelationManager
             ->filters([
                 // يمكنك إضافة فلاتر هنا لتصفية الحضور حسب التاريخ أو حالة الحضور.
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
