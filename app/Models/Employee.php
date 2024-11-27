@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+    
 
     protected $fillable = [
         'first_name',
@@ -49,6 +50,7 @@ class Employee extends Model
         'password',
         'added_by',
         'status',
+        'remember_token',
     ];
 
     // علاقة مع المستخدم الذي أضاف الموظف
