@@ -194,7 +194,23 @@
     "Leave Management": "Leave Management",
     "Pattern Management": "Pattern Management",
     "User Management": "User Management",
-
-     "Zone & Shift Management": "Zone & Shift Management",
-    "HR Settings": "HR Settings"
+    "Zone & Shift Management": "Zone & Shift Management",
+    "HR Settings": "HR Settings",
+    "Attendance Reports": "Attendance Reports",
+    "Attendance Report for Today": "Attendance Report for Today",
+    "Present Employees": "Present Employees",
+    "Absent Employees": "Absent Employees",
+    "Employees on Leave": "Employees on Leave",
+    "Attendance Chart": "Attendance Chart",
+    "Present": "Present",
+    "Absent": "Absent",
+    "On Leave": "On Leave",
+    "Project & Zone Report": "Project & Zone Report",
+    "Total Projects": "Total Projects",
+    "Total Zones": "Total Zones",
+    "Projects Details": "Projects Details",
+    "Project Name": "Project Name",
+    "Zone Count": "Zone Count",
+    "Projects & Zones Chart": "Projects & Zones Chart",
+    "Zones per Project": "Zones per Project"
 }

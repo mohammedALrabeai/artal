@@ -1,28 +1,23 @@
 <?php
+
 namespace App\Filament\Resources\EmployeeResource\Pages;
 
 use App\Filament\Resources\EmployeeResource;
-use Filament\Pages\Actions;
 use Filament\Resources\Pages\ViewRecord;
 
 class ViewEmployee extends ViewRecord
 {
     protected static string $resource = EmployeeResource::class;
+    // protected static string $view = 'filament.resources.employee-resource.pages.view-employee';
 
-    protected function getHeaderWidgets(): array
+
+    public static function getNavigationLabel(): string
     {
-        return [
-            // Widgets for displaying metrics, such as contract status or vacation balance
-        ];
+        return __('View Employee');
     }
 
-    protected function getFormSchema(): array
+    public function getTitle(): string
     {
-        return [
-            Forms\Components\TextInput::make('first_name')->label(__('First Name'))->disabled(),
-            Forms\Components\TextInput::make('job_status')->label(__('Job Status'))->disabled(),
-            Forms\Components\TextInput::make('vacation_balance')->label(__('Vacation Balance'))->disabled(),
-            // Add more fields as needed
-        ];
+        return __('View Employee');
     }
 }

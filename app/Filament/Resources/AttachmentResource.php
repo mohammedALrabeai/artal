@@ -43,6 +43,9 @@ class AttachmentResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
+            Forms\Components\TextInput::make('title')
+    ->label(__('Title'))
+    ->required(),
             Forms\Components\Select::make('employee_id')
                 ->label(__('Employee'))
                 ->options(Employee::all()->pluck('first_name', 'id'))
@@ -112,6 +115,12 @@ class AttachmentResource extends Resource
     {
         return $table
             ->columns([
+
+                Tables\Columns\TextColumn::make('title')
+    ->label(__('Title'))
+    ->sortable()
+    ->searchable(),
+
                 Tables\Columns\TextColumn::make('employee.first_name')
                     ->label(__('Employee'))
                     ->searchable(),

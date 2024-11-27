@@ -164,7 +164,6 @@
     "Number of Employees by Zone": "عدد الموظفين حسب المنطقة",
     "Report Title": "عنوان التقرير",
     "Report Data": "بيانات التقرير",
-
     "Employees": "الموظفين",
     "Employee": "موظف",
     "Zones": "المواقع",
@@ -177,7 +176,6 @@
     "Shift Management": "إدارة الورديات",
     "Zone Management": "إدارة المواقع",
     "Attachments Management": "إدارة المرفقات",
-    
     "Attendances": "الحضور",
     "Attendance": "حضور",
     "Coverage": "التغطية",
@@ -196,9 +194,23 @@
     "Leave Management": "إدارة الإجازات",
     "Pattern Management": "إدارة الأنماط",
     "User Management": "إدارة المستخدمين",
-
-   
     "Zone & Shift Management": "إدارة المناطق والورديات",
-    "HR Settings": "إعدادات الموارد البشرية"
-
+    "HR Settings": "إعدادات الموارد البشرية",
+    "Attendance Reports": "تقارير الحضور",
+    "Attendance Report for Today": "تقرير الحضور اليومي",
+    "Present Employees": "الموظفون الحاضرون",
+    "Absent Employees": "الموظفون الغائبون",
+    "Employees on Leave": "الموظفون في إجازة",
+    "Attendance Chart": "مخطط الحضور",
+    "Present": "حاضر",
+    "Absent": "غائب",
+    "On Leave": "في إجازة",
+    "Project & Zone Report": "تقرير المشاريع والمناطق",
+    "Total Projects": "إجمالي المشاريع",
+    "Total Zones": "إجمالي المواقع",
+    "Projects Details": "تفاصيل المشاريع",
+    "Project Name": "اسم المشروع",
+    "Zone Count": "عدد المواقع",
+    "Projects & Zones Chart": "مخطط المشاريع والمواقع",
+    "Zones per Project": "المواقع لكل مشروع"
 }

@@ -13,6 +13,7 @@ class EmployeeProjectRecord extends Model
         'project_id',
         'start_date',
         'end_date',
+        'zone_id',
         'status',
     ];
 
@@ -27,4 +28,10 @@ class EmployeeProjectRecord extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    public function zone()
+{
+    return $this->belongsTo(Zone::class);
+}
+
 }

@@ -72,4 +72,23 @@ public function projects()
         ->withPivot('start_date', 'end_date', 'status');
 }
 
+// public function projectRecords()
+// {
+//     return $this->hasMany(EmployeeProjectRecord::class);
+// }
+public function projectRecords()
+{
+    return $this->hasMany(EmployeeProjectRecord::class, 'employee_id');
+}
+
+public function attachments(){
+    return $this->hasMany(Attachment::class);
+}
+
+public function attendances()
+{
+    return $this->hasMany(Attendance::class);
+}
+
+
 }

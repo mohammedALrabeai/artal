@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\EmployeeResource\Pages;
+
 use App\Filament\Resources\EmployeeResource\RelationManagers;
 use App\Models\Employee;
 use Filament\Forms;
@@ -449,6 +450,11 @@ class EmployeeResource extends Resource
                     ->options(User::all()->pluck('name', 'id')),
             ])
             ->actions([
+                Tables\Actions\Action::make('view')
+                ->label(__('View'))
+                ->icon('heroicon-o-eye')
+                ->url(fn ($record) => static::getUrl('view', ['record' => $record->id]))
+                ->openUrlInNewTab(false),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -462,11 +468,21 @@ class EmployeeResource extends Resource
         return [
             'index' => Pages\ListEmployees::route('/'),
             'create' => Pages\CreateEmployee::route('/create'),
-            'view' => Pages\ViewEmployee::route('/{record}'),
+          
+            // 'view' => Pages\ViewEmployee::route('/{record}/view'),
             'edit' => Pages\EditEmployee::route('/{record}/edit'),
+            'view' => Pages\ViewEmployee::route('/{record}/view'),
           
         ];
     }
+    public static function getRelations(): array
+{
+    return [
+        RelationManagers\ProjectRecordsRelationManager::class,
+        RelationManagers\AttachmentsRelationManager::class,
+        RelationManagers\AttendanceRelationManager::class,
+    ];
+}
 
 //     protected function getHeaderWidgets(): array
 // {

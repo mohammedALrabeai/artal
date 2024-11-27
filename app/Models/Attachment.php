@@ -15,6 +15,7 @@ class Attachment extends Model
         'content',
         'expiry_date',
         'notes',
+        'title', 
     ];
 
     // العلاقة مع الموظف
