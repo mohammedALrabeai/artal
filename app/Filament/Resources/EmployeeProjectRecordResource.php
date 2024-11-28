@@ -32,7 +32,10 @@ class EmployeeProjectRecordResource extends Resource
     {
         return __('Employee Project Records');
     }
-
+    public static function getPluralLabel(): string
+    {
+        return __('Employee Project Records');
+    }
     public static function getNavigationGroup(): ?string
     {
         return __('Employee Management');

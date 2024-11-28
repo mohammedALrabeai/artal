@@ -21,6 +21,11 @@ class AttendanceResource extends Resource
     protected static ?string $model = Attendance::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
    public static function getNavigationLabel(): string
 {
     return __('Attendances');

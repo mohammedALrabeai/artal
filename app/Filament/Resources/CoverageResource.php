@@ -17,6 +17,11 @@ use App\Filament\Resources\CoverageResource\RelationManagers;
 class CoverageResource extends Resource
 {
     protected static ?string $model = Coverage::class;
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     public static function getNavigationLabel(): string

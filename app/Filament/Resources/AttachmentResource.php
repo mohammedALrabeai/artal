@@ -22,6 +22,12 @@ class AttachmentResource extends Resource
     protected static ?string $model = Attachment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
+
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
     public static function getNavigationLabel(): string
     {
         return __('Attachments');

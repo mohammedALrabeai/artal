@@ -16,6 +16,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class LeaveResource extends Resource
 {
     protected static ?string $model = Leave::class;
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     public static function getNavigationLabel(): string

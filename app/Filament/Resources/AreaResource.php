@@ -18,9 +18,27 @@ class AreaResource extends Resource
     protected static ?string $model = Area::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationLabel = 'Areas';
-    protected static ?string $pluralLabel = 'Areas';
-    protected static ?string $navigationGroup = 'Zone & Project Management';
+
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Areas');
+    }
+    
+    public static function getPluralLabel(): string
+    {
+        return __('Areas');
+    }
+    
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Zone & Project Management');
+    }
+    
 
     public static function form(Form $form): Form
     {

@@ -14,6 +14,11 @@ use App\Filament\Resources\PatternResource\Pages;
 class PatternResource extends Resource
 {
     protected static ?string $model = Pattern::class;
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
 
     // protected static ?string $navigationIcon = 'heroicon-o-collection'; // أيقونة المورد
 

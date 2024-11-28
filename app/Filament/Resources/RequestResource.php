@@ -16,6 +16,27 @@ class RequestResource extends Resource
 {
     protected static ?string $model = Request::class;
 
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
+    public static function getNavigationLabel(): string
+{
+    return __('Requests');
+}
+
+public static function getPluralLabel(): string
+{
+    return __('Requests');
+}
+
+public static function getNavigationGroup(): ?string
+{
+    return __('Request Management');
+}
+
+
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form->schema([

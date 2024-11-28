@@ -23,6 +23,11 @@ class ShiftResource extends Resource
     protected static ?string $model = Shift::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clock';
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
 
     public static function getNavigationLabel(): string
     {

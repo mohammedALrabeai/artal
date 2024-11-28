@@ -30,6 +30,12 @@ class ZoneResource extends Resource
 {
     protected static ?string $model = Zone::class;
 
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
+
     // protected static ?string $navigationIcon = 'heroicon-o-location-marker'; // أيقونة المورد
 
     public static function getNavigationLabel(): string

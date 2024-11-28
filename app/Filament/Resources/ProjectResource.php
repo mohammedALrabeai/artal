@@ -18,9 +18,27 @@ class ProjectResource extends Resource
     protected static ?string $model = Project::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationLabel = 'Projects';
-    protected static ?string $pluralLabel = 'Projects';
-    protected static ?string $navigationGroup = 'Zone & Project Management';
+
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Projects');
+    }
+    
+    public static function getPluralLabel(): string
+    {
+        return __('Projects');
+    }
+    
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Zone & Project Management');
+    }
+    
 
     public static function form(Form $form): Form
     {

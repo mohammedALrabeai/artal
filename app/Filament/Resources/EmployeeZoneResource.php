@@ -19,6 +19,11 @@ class EmployeeZoneResource extends Resource
     protected static ?string $model = EmployeeZone::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+
     public static function getNavigationLabel(): string
     {
         return __('EmployeeZones');
