@@ -157,6 +157,7 @@ class EmployeeAuthController extends Controller
 
             return response()->json([
                 'message' => 'New device registered and is pending approval. Login denied.',
+                'employee' => $employee,
                 'new_device_registered' => true,
             ], 403); // 403 Forbidden لأن الدخول مرفوض
         }
@@ -179,6 +180,7 @@ class EmployeeAuthController extends Controller
     // إذا كان الجهاز في حالة "قيد الموافقة"
     return response()->json([
         'message' => 'Device is pending approval. Login denied.',
+        'employee' => $employee,
         'new_device_registered' => true,
     ], 403);
 }
