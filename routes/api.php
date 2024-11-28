@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Artisan;
 
 Route::post('/employee/login', [EmployeeAuthController::class, 'login']);
 Route::post('/employee/verify-otp', [EmployeeAuthController::class, 'verifyOtp']);
+Route::post('employee/check-device-approval', [App\Http\Controllers\Auth\EmployeeAuthController::class, 'checkDeviceApproval']);
+
 
 
 

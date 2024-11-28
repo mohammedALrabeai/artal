@@ -185,4 +185,38 @@ class EmployeeAuthController extends Controller
     ], 403);
 }
 
+public function checkDeviceApproval(Request $request)
+{
+    $request->validate([
+        'employee_id' => 'required|integer',
+        'device_id' => 'required|string',
+    ]);
+
+    $device = \App\Models\EmployeeDevice::where('employee_id', $request->employee_id)
+        ->where('device_id', $request->device_id)
+        ->first();
+
+    if (!$device) {
+        return response()->json([
+            'message' => 'Device not registered for this employee.',
+            'status' => 'not_registered',
+        ], 404);
+    }
+
+    if ($device->status === 'approved') {
+        return response()->json([
+            'message' => 'Device approved.',
+            'status' => 'approved',
+        ]);
+    }
+
+    if ($device->status === 'pending') {
+        return response()->json([
+            'message' => 'Device pending approval.',
+            'status' => 'pending',
+        ]);
+    }
+}
+
+
 }
