@@ -92,5 +92,10 @@ public function attendances()
     return $this->hasMany(Attendance::class);
 }
 
+public function devices()
+{
+    return $this->hasMany(EmployeeDevice::class);
+}
+
 
 }

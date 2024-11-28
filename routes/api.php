@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\EmployeeAuthController;
 
+use App\Http\Controllers\EmployeeController;
+
 
 
 
@@ -12,6 +14,11 @@ use App\Http\Controllers\Auth\EmployeeAuthController;
 Route::post('/employee/login', [EmployeeAuthController::class, 'login']);
 Route::post('/employee/verify-otp', [EmployeeAuthController::class, 'verifyOtp']);
 
+
+
+Route::middleware('auth:employee')->group(function () {
+    Route::get('employee/schedule', [EmployeeController::class, 'schedule']);
+});
 
 
 
