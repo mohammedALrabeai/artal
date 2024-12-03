@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\EmployeeAuthController;
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -21,6 +22,16 @@ Route::post('employee/check-device-approval', [App\Http\Controllers\Auth\Employe
 Route::middleware('auth:employee')->group(function () {
     Route::get('/employee/projects', [EmployeeController::class, 'getEmployeeProjects']);
 });
+
+
+Route::middleware('auth:employee')->group(function () {
+    Route::get('/employee/projectRecords', [ProjectController::class, 'getEmployeeProjects']);
+});
+
+Route::middleware(['auth:employee'])->group(function () {
+    Route::get('/employee/zones', [EmployeeController::class, 'getEmployeeZones']);
+});
+
 
 
 

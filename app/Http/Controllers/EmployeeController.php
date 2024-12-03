@@ -1,11 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Employee;
 use App\Models\Shift;
-
 use App\Models\Project;
+use App\Models\Employee;
+
+use Illuminate\Http\Request;
+use App\Models\EmployeeProjectRecord;
 
 class EmployeeController extends Controller
 {
@@ -103,5 +104,65 @@ class EmployeeController extends Controller
             }),
         ]);
     }
+
+
+    public function getEmployeeZones(Request $request)
+{
+    // استخراج الموظف باستخدام التوكن
+    $employee = $request->user();
+
+    if (!$employee) {
+        return response()->json(['status' => 'error', 'message' => 'Unauthorized'], 401);
+    }
+
+    $employeeZones = EmployeeProjectRecord::with(['project', 'zone', 'shift'])
+        ->where('employee_id', $employee->id)
+        ->get();
+
+    if ($employeeZones->isEmpty()) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'No zones found for this employee.',
+        ], 404);
+    }
+
+    $data = $employeeZones->map(function ($record) {
+        return [
+            'project' => [
+                'id' => $record->project->id ?? null,
+                'name' => $record->project->name ?? null,
+                'description' => $record->project->description ?? null,
+                'start_date' => $record->project->start_date ?? null,
+                'end_date' => $record->project->end_date ?? null,
+            ],
+            'zone' => [
+                'id' => $record->zone->id ?? null,
+                'name' => $record->zone->name ?? null,
+                'latitude' => $record->zone->lat ?? null,
+                'longitude' => $record->zone->longg ?? null,
+                'area_radius' => $record->zone->area ?? null,
+                'start_date' => $record->zone->start_date ?? null,
+            ],
+            'shift' => [
+                'id' => $record->shift->id ?? null,
+                'name' => $record->shift->name ?? null,
+                'type' => $record->shift->type ?? null,
+                'morning_start' => $record->shift->morning_start ?? null,
+                'morning_end' => $record->shift->morning_end ?? null,
+                'evening_start' => $record->shift->evening_start ?? null,
+                'evening_end' => $record->shift->evening_end ?? null,
+            ],
+            'status' => $record->status,
+            'start_date' => $record->start_date,
+            'end_date' => $record->end_date,
+        ];
+    });
+
+    return response()->json([
+        'status' => 'success',
+        'data' => $data,
+    ]);
+}
+
     
 }

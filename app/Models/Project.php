@@ -29,9 +29,14 @@ class Project extends Model
     }
 
     // علاقة مع الموظفين
+    // public function employees()
+    // {
+    //     return $this->belongsToMany(Employee::class, 'employee_project_records')
+    //         ->withPivot('start_date', 'end_date', 'status');
+    // }
     public function employees()
     {
         return $this->belongsToMany(Employee::class, 'employee_project_records')
-            ->withPivot('start_date', 'end_date', 'status');
+            ->withPivot('start_date', 'end_date', 'zone_id', 'shift_id', 'status');
     }
 }
