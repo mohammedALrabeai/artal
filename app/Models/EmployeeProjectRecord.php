@@ -14,6 +14,7 @@ class EmployeeProjectRecord extends Model
         'start_date',
         'end_date',
         'zone_id',
+        'shift_id',
         'status',
     ];
 
@@ -33,5 +34,12 @@ class EmployeeProjectRecord extends Model
 {
     return $this->belongsTo(Zone::class);
 }
+
+
+public function shift()
+{
+    return $this->belongsTo(Shift::class);
+}
+
 
 }

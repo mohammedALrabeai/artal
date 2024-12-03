@@ -18,6 +18,12 @@ Route::post('/employee/verify-otp', [EmployeeAuthController::class, 'verifyOtp']
 Route::post('employee/check-device-approval', [App\Http\Controllers\Auth\EmployeeAuthController::class, 'checkDeviceApproval']);
 
 
+Route::middleware('auth:employee')->group(function () {
+    Route::get('/employee/projects', [EmployeeController::class, 'getEmployeeProjects']);
+});
+
+
+
 
 
 Route::middleware('auth:employee')->group(function () {

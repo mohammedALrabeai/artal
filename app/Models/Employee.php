@@ -51,6 +51,7 @@ class Employee extends Model
         'added_by',
         'status',
         'remember_token',
+        'api_token'
     ];
 
     // علاقة مع المستخدم الذي أضاف الموظف

@@ -21,12 +21,18 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\Action;
+
 
 use Closure;
 
 class EmployeeProjectRecordResource extends Resource
 {
     protected static ?string $model = EmployeeProjectRecord::class;
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function getNavigationLabel(): string
     {
@@ -51,26 +57,45 @@ class EmployeeProjectRecordResource extends Resource
                 ->required(),
             
                 Select::make('project_id')
-                ->label(__('Project'))
-                ->options(Project::all()->pluck('name', 'id'))
-                ->searchable()
-                ->required()
-                ->reactive()
-                ->afterStateUpdated(function ($state, $set) {
-                    $set('zone_id', null); // إعادة تعيين zone_id
-                }),
-            
-            Select::make('zone_id')
-                ->label(__('Zone'))
-                ->options(function ($get) {
-                    $projectId = $get('project_id'); // الحصول على معرف المشروع
-                    if (!$projectId) {
-                        return []; // إذا لم يتم اختيار مشروع، عرض قائمة فارغة
-                    }
-                    return Zone::where('project_id', $projectId)->pluck('name', 'id');
-                })
-                ->searchable()
-                ->required(),
+            ->label(__('Project'))
+            ->options(\App\Models\Project::all()->pluck('name', 'id'))
+            ->searchable()
+            ->required()
+            ->reactive()
+            ->afterStateUpdated(function (callable $set) {
+                $set('zone_id', null); // إعادة تعيين اختيار الموقع عند تغيير المشروع
+                $set('shift_id', null); // إعادة تعيين اختيار الوردية عند تغيير المشروع
+            }),
+
+        // اختيار الموقع
+        Select::make('zone_id')
+            ->label(__('Zone'))
+            ->options(function (callable $get) {
+                $projectId = $get('project_id');
+                if (!$projectId) {
+                    return [];
+                }
+                return \App\Models\Zone::where('project_id', $projectId)->pluck('name', 'id');
+            })
+            ->searchable()
+            ->required()
+            ->reactive()
+            ->afterStateUpdated(function (callable $set) {
+                $set('shift_id', null); // إعادة تعيين اختيار الوردية عند تغيير الموقع
+            }),
+
+        // اختيار الوردية
+        Select::make('shift_id')
+            ->label(__('Shift'))
+            ->options(function (callable $get) {
+                $zoneId = $get('zone_id');
+                if (!$zoneId) {
+                    return [];
+                }
+                return \App\Models\Shift::where('zone_id', $zoneId)->pluck('name', 'id');
+            })
+            ->searchable()
+            ->required(),
 
             DatePicker::make('start_date')
                 ->label(__('Start Date'))
@@ -79,8 +104,13 @@ class EmployeeProjectRecordResource extends Resource
             DatePicker::make('end_date')
                 ->label(__('End Date')),
             
-            Toggle::make('status')
-                ->label(__('Status')),
+                Forms\Components\Toggle::make('status')
+                ->label(__('Status'))
+                ->onColor('success') // لون عند التفعيل
+                ->offColor('danger') // لون عند الإيقاف
+                ->required()
+            
+            
         ]);
     }
 
@@ -102,6 +132,11 @@ class EmployeeProjectRecordResource extends Resource
                     ->label(__('Zone'))
                     ->sortable()
                     ->searchable(),
+                  TextColumn::make('shift.name')
+                    ->label(__('Shift'))
+                    ->sortable()
+                    ->searchable(),
+                
 
                 TextColumn::make('start_date')
                     ->label(__('Start Date'))
@@ -110,10 +145,13 @@ class EmployeeProjectRecordResource extends Resource
                 TextColumn::make('end_date')
                     ->label(__('End Date'))
                     ->date(),
+                    BooleanColumn::make('status')
+    ->label(__('Status'))
+    ->sortable(),
 
-                BooleanColumn::make('status')
-                    ->label(__('Status'))
-                    ->sortable(),
+
+               
+                
             ])
             ->filters([
                 SelectFilter::make('project_id')
@@ -140,6 +178,15 @@ class EmployeeProjectRecordResource extends Resource
                 DeleteBulkAction::make(),
             ]);
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+{
+    if (isset($data['status']) && is_bool($data['status'])) {
+        $data['status'] = $data['status'] ? 'active' : 'completed';
+    }
+    return $data;
+}
+
 
     public static function getPages(): array
     {

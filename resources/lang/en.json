@@ -255,5 +255,11 @@
     "Areas": "Areas",
     "Projects": "Projects",
     "Zone & Project Management": "Zone & Project Management",
-     "Employee Project Records": "Employee Project Records"
+    "Employee Project Records": "Employee Project Records",
+    "Project": "Project",
+    "Zone": "Zone",
+    "Shift": "Shift",
+    "Start Date": "Start Date",
+    "End Date": "End Date",
+    "Status": "Status"
 }

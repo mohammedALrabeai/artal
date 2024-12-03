@@ -94,7 +94,6 @@
     "Contract Start": "بداية العقد",
     "Actual Start": "المباشرة الفعلية",
     "Full Name": "الاسم الكامل",
-    "Status": "الحالة",
     "Attachments": "المرفقات",
     "Content": "المحتوى",
     "Expiry Date": "تاريخ الانتهاء",
@@ -128,7 +127,6 @@
     "Date": "التاريخ",
     "Check In": "وقت الحضور",
     "Check Out": "وقت الانصراف",
-    "Status": "الحالة",
     "Present": "حاضر",
     "Absent": "غائب",
     "On Leave": "في إجازة",
@@ -139,7 +137,6 @@
     "Zone": "الموقع",
     "Start Date": "تاريخ البدء",
     "End Date": "تاريخ الانتهاء",
-    "Status": "الحالة",
     "Active": "نشط",
     "Absent": "غائب",
     "Transferred": "منقول",
@@ -149,7 +146,6 @@
     "Absent Employee": "الموظف الغائب",
     "Zone": "الموقع",
     "Date": "التاريخ",
-    "Status": "الحالة",
     "Completed": "تمت",
     "Cancelled": "ملغاة",
     "ID": "المعرف",
@@ -253,5 +249,10 @@
     "Areas": "المناطق",
     "Zone & Project Management": "إدارة المناطق والمشاريع",
     "Projects": "المشاريع",
-    "Employee Project Records": "مواقع الموظفين"
+    "Employee Project Records": "مواقع الموظفين",
+    "Project": "المشروع",
+    "Zone": "الموقع",
+    "Shift": "الوردية",
+    "Start Date": "تاريخ البدء",
+    "End Date": "تاريخ الانتهاء"
 }
