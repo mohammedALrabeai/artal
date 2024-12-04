@@ -25,7 +25,7 @@ Route::middleware('auth:employee')->group(function () {
 
 
 Route::middleware('auth:employee')->group(function () {
-    Route::get('/employee/projectRecords', [ProjectController::class, 'getEmployeeProjects']);
+    Route::get('/employee/projectRecords', [ProjectController::class, 'getEmployeeProjectRecords']);
 });
 
 Route::middleware(['auth:employee'])->group(function () {
