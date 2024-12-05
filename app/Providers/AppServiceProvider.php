@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Filament\Facades\Filament;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
             $switch
                 ->locales(['ar','en','fr']); // also accepts a closure
         });
+
+     
     }
 }
