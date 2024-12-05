@@ -254,5 +254,27 @@
     "Zone": "الموقع",
     "Shift": "الوردية",
     "Start Date": "تاريخ البدء",
-    "End Date": "تاريخ الانتهاء"
+    "Banks": "البنوك",
+    "Bank Name": "اسم البنك",
+    "Contact Number": "رقم التواصل",
+    "Email": "البريد الإلكتروني",
+    "Address": "العنوان",
+    "Notes": "ملاحظات",
+    "Has Loans": "لديه قروض",
+    "Created At": "تاريخ الإضافة",
+    "Loans": "القروض",
+    "Loan Amount": "مبلغ القرض",
+    "Loan Duration (Months)": "مدة القرض (بالأشهر)",
+    "Purpose": "الغرض",
+    "Active Loans": "القروض النشطة",
+    "Bank": "البنك",
+    "Loan Purpose": "الغرض من القرض",
+    "Amount": "المبلغ",
+    "Duration (Months)": "المدة (بالأشهر)",
+
+    "Employee Name": "اسم الموظف",
+   
+    "Completed Loans": "القروض المكتملة",
+    "Filter by Bank": "تصفية حسب البنك",
+    "Filter by Employee": "تصفية حسب الموظف"
 }

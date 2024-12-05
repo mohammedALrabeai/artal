@@ -99,5 +99,11 @@ public function devices()
 }
 
 
+public function loans()
+{
+    return $this->hasMany(Loan::class);
+}
+
+
 
 }

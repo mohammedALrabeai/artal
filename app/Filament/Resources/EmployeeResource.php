@@ -488,6 +488,7 @@ class EmployeeResource extends Resource
         RelationManagers\AttachmentsRelationManager::class,
         RelationManagers\AttendanceRelationManager::class,
         RelationManagers\DevicesRelationManager::class,
+        RelationManagers\LoanRelationManager::class,
     
     ];
 }
